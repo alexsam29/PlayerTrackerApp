@@ -52,6 +52,7 @@ namespace PlayerTrackerApp
 
         private void playerInfo_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            Navigation.PushAsync(new PlayerDetailsPage(playerResult));
 
         }
     }

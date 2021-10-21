@@ -25,7 +25,7 @@
         <Label Text=""></Label>
         <ListView
             x:Name="playerInfo" HasUnevenRows="True"
-            ItemSelected="playerInfo_ItemSelected">
+            ItemTapped="playerInfo_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -34,7 +34,7 @@
                                 <Label FontSize="Large" Text="{Binding Path=name, StringFormat='{0}'}" TextColor="Black"></Label>
                             </StackLayout>
                             <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
-                                <Label Text="{Binding teamlong} "></Label>
+                                <Label Text="{Binding teamshort} "></Label>
                                 <Label Text=" - "></Label>
                                 <Label Text="{Binding pos} "></Label>
                                 <Label Text=" - "></Label>

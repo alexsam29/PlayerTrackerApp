@@ -1,12 +1,76 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PlayerTrackerApp.PlayerDetailsPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+             x:Class="PlayerTrackerApp.PlayerDetailsPage"
+             Title="Player Details">
+    <StackLayout Padding="20">
+        <Grid HorizontalOptions="Center">
+            <Grid.RowDefinitions>
+                
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                
+            </Grid.ColumnDefinitions>
+            <Label Text="Name:" FontSize="Medium" Grid.Row="0" Grid.Column="0"></Label>
+            <Label x:Name="name" FontSize="Medium" Grid.Row="0" Grid.Column="1"></Label>
+
+            <Label Text="Team:" FontSize="Medium" Grid.Row="1" Grid.Column="0"></Label>
+            <Label x:Name="team" FontSize="Medium" Grid.Row="1" Grid.Column="1"></Label>
+
+            <Label Text="Number:" FontSize="Medium" Grid.Row="2" Grid.Column="0"></Label>
+            <Label x:Name="number" FontSize="Medium" Grid.Row="2" Grid.Column="1"></Label>
+
+            <Label Text="Position:" FontSize="Medium" Grid.Row="3" Grid.Column="0"></Label>
+            <Label x:Name="pos" FontSize="Medium" Grid.Row="3" Grid.Column="1"></Label>
+        </Grid>
+        
+        <Label TextColor="Black" HorizontalOptions="Center" FontSize="Title"  Text="Personal Info"></Label>
+        <Grid HorizontalOptions="Center">
+            <Label Text="Birthdate:" FontSize="Medium" Grid.Row="0" Grid.Column="0"></Label>
+            <Label x:Name="born" FontSize="Medium" Grid.Row="0" Grid.Column="1"></Label>
+            
+            <Label Text="Shoots/Handedness:" FontSize="Medium" Grid.Row="1" Grid.Column="0"></Label>
+            <Label x:Name="shoots" FontSize="Medium" Grid.Row="1" Grid.Column="1"></Label>
+
+            <Label Text="Weight:" FontSize="Medium" Grid.Row="2" Grid.Column="0"></Label>
+            <Label x:Name="weight" FontSize="Medium" Grid.Row="2" Grid.Column="1"></Label>
+
+            <Label Text="Height:" FontSize="Medium" Grid.Row="3" Grid.Column="0"></Label>
+            <Label x:Name="height" FontSize="Medium" Grid.Row="3" Grid.Column="1"></Label>
+        </Grid>
+
+        <Label TextColor="Black" HorizontalOptions="Center" FontSize="Title"  Text="Overall Statistics"></Label>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"></ColumnDefinition>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Text="Games Played" FontSize="Small" Grid.Row="0" Grid.Column="0"></Label>
+            <Label Text="Goals" FontSize="Small" Grid.Row="0" Grid.Column="1"></Label>
+            <Label Text="Assists" FontSize="Small" Grid.Row="0" Grid.Column="2"></Label>
+            <Label Text="Points" FontSize="Small" Grid.Row="0" Grid.Column="3"></Label>
+
+            <Label x:Name="gp" FontSize="Small" Grid.Row="1" Grid.Column="0"></Label>
+            <Label x:Name="goals" FontSize="Small" Grid.Row="1" Grid.Column="1"></Label>
+            <Label x:Name="assists" FontSize="Small" Grid.Row="1" Grid.Column="2"></Label>
+            <Label x:Name="points" FontSize="Small" Grid.Row="1" Grid.Column="3"></Label>
+
+            <Label Text="Penalty Minutes" FontSize="Small" Grid.Row="2" Grid.Column="0"></Label>
+            <Label Text="PowerPlay Goals" FontSize="Small" Grid.Row="2" Grid.Column="1"></Label>
+            <Label Text="Shorthanded Goals" FontSize="Small" Grid.Row="2" Grid.Column="2"></Label>
+            <Label Text="Game Winning Goals" FontSize="Small" Grid.Row="2" Grid.Column="3"></Label>
+
+            <Label x:Name="pim" FontSize="Small" Grid.Row="3" Grid.Column="0"></Label>
+            <Label x:Name="ppg" FontSize="Small" Grid.Row="3" Grid.Column="1"></Label>
+            <Label x:Name="shg" FontSize="Small" Grid.Row="3" Grid.Column="2"></Label>
+            <Label x:Name="gwg" FontSize="Small" Grid.Row="3" Grid.Column="3"></Label>
+        </Grid>
+
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Add to Favourites"></Button>
+            <Button Clicked="Button_Clicked" Text="Season-By-Season Stats"></Button>
         </StackLayout>
-    </ContentPage.Content>
+    </StackLayout>
 </ContentPage>
