@@ -13,7 +13,8 @@ namespace PlayerTrackerApp
     {
         string playerName;
         string leagueName;
-        ObservableCollection<Player> playersSearched = new ObservableCollection<Player>();
+        ObservableCollection<Player> playerResult = new ObservableCollection<Player>();
+        ObservableCollection<Player> history = new ObservableCollection<Player>();
         NetworkingManager manager = new NetworkingManager();
         public MainPage()
         {
@@ -23,8 +24,12 @@ namespace PlayerTrackerApp
         async void SearchBar_SearchButtonPressed(object sender, EventArgs e)
         {
             Player playData = await manager.getPlayer(playerName, leagueName);
-            playersSearched.Add(playData);
-            playerInfo.ItemsSource = playersSearched;
+            if (playerResult.Count == 1)
+                playerResult.Clear();
+            playerResult.Add(playData);
+            history.Add(playData);
+            playerInfo.ItemsSource = playerResult;
+
 
         }
 
@@ -43,6 +48,11 @@ namespace PlayerTrackerApp
         void Search_Button_Clicked(object sender, EventArgs e)
         {
             SearchBar_SearchButtonPressed(sender, e);
+        }
+
+        private void playerInfo_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+
         }
     }
 }

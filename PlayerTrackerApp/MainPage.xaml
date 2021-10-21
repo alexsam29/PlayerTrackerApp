@@ -11,7 +11,7 @@
                Text=" Fantasy Hockey Stat Tracker">
             </Label>
             <Label HorizontalOptions="Center" Text="Find a player" FontSize="Subtitle"></Label>
-            <SearchBar TextChanged="SearchBar_TextChanged" SearchButtonPressed="SearchBar_SearchButtonPressed" Placeholder="Lastname Firstname"></SearchBar>
+            <SearchBar TextChanged="SearchBar_TextChanged" SearchButtonPressed="SearchBar_SearchButtonPressed" Placeholder="Firstname Lastname"></SearchBar>
             <StackLayout Orientation="Vertical">
                 <Label Text=" Select a league:"></Label>
                 <RadioButton Value="NHL" CheckedChanged="RadioButton_CheckedChanged" GroupName="leagues" FontSize="Small" Content="NHL"></RadioButton>
@@ -19,21 +19,34 @@
                 <RadioButton Value="WJC" CheckedChanged="RadioButton_CheckedChanged" GroupName="leagues" FontSize="Small" Content="World Junior Championship"></RadioButton>
                 <RadioButton Value="WCH" CheckedChanged="RadioButton_CheckedChanged" GroupName="leagues" FontSize="Small" Content="World Championship"></RadioButton>
             </StackLayout>
-            <Button Clicked="Search_Button_Clicked" Text="Search" ></Button>
+            <Button BackgroundColor="LightGreen" Clicked="Search_Button_Clicked" Text="Search" ></Button>
             <Button Text="View Favourites" ></Button>
         </StackLayout>
+        <Label Text=""></Label>
         <ListView
-            x:Name="playerInfo" >
+            x:Name="playerInfo" HasUnevenRows="True"
+            ItemSelected="playerInfo_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
-                            <Label Text="{Binding name}"></Label>
+                            <StackLayout HorizontalOptions="Center">
+                                <Label FontSize="Large" Text="{Binding Path=name, StringFormat='{0}'}" TextColor="Black"></Label>
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                                <Label Text="{Binding teamlong} "></Label>
+                                <Label Text=" - "></Label>
+                                <Label Text="{Binding pos} "></Label>
+                                <Label Text=" - "></Label>
+                                <Label Text="{Binding Path=jersey, StringFormat='#{0}'}"></Label>
+                            </StackLayout>
+                            <Label HorizontalOptions="Center" Text="Click for more details"></Label>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button HorizontalOptions="End" Text="Search History"></Button>
     </StackLayout>
 
 </ContentPage>
