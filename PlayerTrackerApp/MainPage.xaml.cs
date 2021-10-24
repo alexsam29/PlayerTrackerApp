@@ -23,14 +23,26 @@ namespace PlayerTrackerApp
 
         async void SearchBar_SearchButtonPressed(object sender, EventArgs e)
         {
-            Player playData = await manager.getPlayer(playerName, leagueName);
-            if (playerResult.Count == 1)
-                playerResult.Clear();
-            playerResult.Add(playData);
-            history.Add(playData);
-            playerInfo.ItemsSource = playerResult;
-
-
+            if (playerName != null && leagueName != null)
+            {
+                Player playData = await manager.getPlayer(playerName, leagueName);
+                if(playData.name != null)
+                {
+                    if (playerResult.Count == 1)
+                        playerResult.Clear();
+                    playerResult.Add(playData);
+                    history.Insert(0, playData);
+                    playerInfo.ItemsSource = playerResult;
+                }
+                else
+                    await DisplayAlert("Error!", "Player not found. Make sure first and last name are spelt correctly.", "Okay");
+            }
+            else if (leagueName == null && playerName == null)
+                await DisplayAlert("Error!", "Please select a league and type in a player's name before searching.", "Okay");
+            else if (leagueName == null)
+                await DisplayAlert("Error!", "Please select a league before searching.", "Okay");
+            else if (playerName == null)
+                await DisplayAlert("Error!", "Please input first and last name to search for a player.", "Okay");
         }
 
         void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
@@ -52,8 +64,13 @@ namespace PlayerTrackerApp
 
         private void playerInfo_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Navigation.PushAsync(new PlayerDetailsPage(playerResult));
+            Navigation.PushAsync(new PlayerDetailsPage(playerResult[0]));
 
+        }
+
+        private void History_Button_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new HistoryPage(history));
         }
     }
 }

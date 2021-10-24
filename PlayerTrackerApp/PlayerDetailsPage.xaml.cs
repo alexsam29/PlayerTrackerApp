@@ -14,10 +14,12 @@ namespace PlayerTrackerApp
     public partial class PlayerDetailsPage : ContentPage
     {
         Player info;
-        public PlayerDetailsPage(ObservableCollection<Player> player)
+        List<League> stats;
+        public PlayerDetailsPage(Player player)
         {
             InitializeComponent();
-            info = player[0];
+            info = player;
+            stats = info.league;
 
             name.Text = info.name;
             team.Text = info.teamlong;
@@ -41,7 +43,12 @@ namespace PlayerTrackerApp
 
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void Stats_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new SeasonStatsPage(info.league));
+        }
+
+        private void Favourite_Clicked(object sender, EventArgs e)
         {
 
         }

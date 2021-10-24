@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlayerTrackerApp.HistoryPage"
+             Title="Search History">
+    <StackLayout>
+        <ListView
+            x:Name="historyList" HasUnevenRows="True"
+            ItemSelected="historyList_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <StackLayout HorizontalOptions="Center">
+                                <Label FontSize="Large" Text="{Binding Path=name, StringFormat='{0}'}" TextColor="Black"></Label>
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                                <Label Text="{Binding teamshort} "></Label>
+                                <Label Text=" - "></Label>
+                                <Label Text="{Binding pos} "></Label>
+                                <Label Text=" - "></Label>
+                                <Label Text="{Binding Path=jersey, StringFormat='#{0}'}"></Label>
+                            </StackLayout>
+                            <Label HorizontalOptions="Center" Text="Tap for more details"></Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

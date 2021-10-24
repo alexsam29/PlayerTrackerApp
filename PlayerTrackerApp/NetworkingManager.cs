@@ -21,17 +21,20 @@ namespace PlayerTrackerApp
         public async Task<Player>getPlayer(string name, string league)
         {
             string[] names = name.Split(' ');
+
+            if (names.Length < 2)
+                return new Player();
+
             string completeURL = url1 + names[1] + "%20" + names[0] + "/" + league + url2;
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
                 RequestUri = new Uri(completeURL),
-                Headers =
-    {
-        { "name", names[1] + " " + names[0] },
-        { "x-rapidapi-host", "hockey-live-sk-data.p.rapidapi.com" },
-        { "x-rapidapi-key", "58a3a0a6e6mshf21c3118f7d8a69p1deac3jsnc063824923c9" },
-    },
+                Headers = {
+                            { "name", names[1] + " " + names[0] },
+                            { "x-rapidapi-host", "hockey-live-sk-data.p.rapidapi.com" },
+                            { "x-rapidapi-key", "58a3a0a6e6mshf21c3118f7d8a69p1deac3jsnc063824923c9" },
+                          },
             };
             var response = await client.SendAsync(request);
 
@@ -42,8 +45,8 @@ namespace PlayerTrackerApp
             else
             {
                 var jsonString = await response.Content.ReadAsStringAsync();
-                //var dic = JsonConvert.DeserializeObject<Dictionary<string, object>>
-                //    (jsonString);
+                if (jsonString == "No such player in database")
+                    return new Player();
                 var finalObject = JsonConvert.DeserializeObject<Player>
                      (jsonString);
 

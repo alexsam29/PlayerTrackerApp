@@ -8,10 +8,10 @@
             <Label FontSize="Title" 
                TextColor="Black" 
                HorizontalOptions="Center" 
-               Text=" Fantasy Hockey Stat Tracker">
+               Text="Hockey Stat Tracker">
             </Label>
             <Label HorizontalOptions="Center" Text="Find a player" FontSize="Subtitle"></Label>
-            <SearchBar TextChanged="SearchBar_TextChanged" SearchButtonPressed="SearchBar_SearchButtonPressed" Placeholder="Firstname Lastname"></SearchBar>
+            <SearchBar TextChanged="SearchBar_TextChanged" SearchButtonPressed="SearchBar_SearchButtonPressed" Placeholder="FirstName LastName"></SearchBar>
             <StackLayout Orientation="Vertical">
                 <Label Text=" Select a league:"></Label>
                 <RadioButton Value="NHL" CheckedChanged="RadioButton_CheckedChanged" GroupName="leagues" FontSize="Small" Content="NHL"></RadioButton>
@@ -22,7 +22,6 @@
             <Button BackgroundColor="LightGreen" Clicked="Search_Button_Clicked" Text="Search" ></Button>
             <Button Text="View Favourites" ></Button>
         </StackLayout>
-        <Label Text=""></Label>
         <ListView
             x:Name="playerInfo" HasUnevenRows="True"
             ItemTapped="playerInfo_ItemSelected">
@@ -40,13 +39,13 @@
                                 <Label Text=" - "></Label>
                                 <Label Text="{Binding Path=jersey, StringFormat='#{0}'}"></Label>
                             </StackLayout>
-                            <Label HorizontalOptions="Center" Text="Click for more details"></Label>
+                            <Label HorizontalOptions="Center" Text="Tap for more details"></Label>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button HorizontalOptions="End" Text="Search History"></Button>
+        <Button Clicked="History_Button_Clicked" HorizontalOptions="End" Text="Search History"></Button>
     </StackLayout>
 
 </ContentPage>

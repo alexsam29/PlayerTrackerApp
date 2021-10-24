@@ -4,42 +4,37 @@
              x:Class="PlayerTrackerApp.PlayerDetailsPage"
              Title="Player Details">
     <StackLayout Padding="20">
+
         <Grid HorizontalOptions="Center">
-            <Grid.RowDefinitions>
-                
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                
-            </Grid.ColumnDefinitions>
-            <Label Text="Name:" FontSize="Medium" Grid.Row="0" Grid.Column="0"></Label>
-            <Label x:Name="name" FontSize="Medium" Grid.Row="0" Grid.Column="1"></Label>
+            <Label TextColor="Black" Text="Name:" FontSize="Medium" Grid.Row="0" Grid.Column="0"></Label>
+            <Label TextColor="Black" x:Name="name" FontSize="Medium" Grid.Row="0" Grid.Column="1"></Label>
 
-            <Label Text="Team:" FontSize="Medium" Grid.Row="1" Grid.Column="0"></Label>
-            <Label x:Name="team" FontSize="Medium" Grid.Row="1" Grid.Column="1"></Label>
+            <Label TextColor="Black" Text="Team:" FontSize="Medium" Grid.Row="1" Grid.Column="0"></Label>
+            <Label TextColor="Black" x:Name="team" FontSize="Medium" Grid.Row="1" Grid.Column="1"></Label>
 
-            <Label Text="Number:" FontSize="Medium" Grid.Row="2" Grid.Column="0"></Label>
-            <Label x:Name="number" FontSize="Medium" Grid.Row="2" Grid.Column="1"></Label>
+            <Label TextColor="Black" Text="Number:" FontSize="Medium" Grid.Row="2" Grid.Column="0"></Label>
+            <Label TextColor="Black" x:Name="number" FontSize="Medium" Grid.Row="2" Grid.Column="1"></Label>
 
-            <Label Text="Position:" FontSize="Medium" Grid.Row="3" Grid.Column="0"></Label>
-            <Label x:Name="pos" FontSize="Medium" Grid.Row="3" Grid.Column="1"></Label>
+            <Label TextColor="Black" Text="Position:" FontSize="Medium" Grid.Row="3" Grid.Column="0"></Label>
+            <Label TextColor="Black" x:Name="pos" FontSize="Medium" Grid.Row="3" Grid.Column="1"></Label>
         </Grid>
-        
-        <Label TextColor="Black" HorizontalOptions="Center" FontSize="Title"  Text="Personal Info"></Label>
+        <Rectangle BackgroundColor="Gray"></Rectangle>
+        <Label HorizontalOptions="Center" FontSize="Title"  Text="Personal Info"></Label>
         <Grid HorizontalOptions="Center">
-            <Label Text="Birthdate:" FontSize="Medium" Grid.Row="0" Grid.Column="0"></Label>
-            <Label x:Name="born" FontSize="Medium" Grid.Row="0" Grid.Column="1"></Label>
-            
-            <Label Text="Shoots/Handedness:" FontSize="Medium" Grid.Row="1" Grid.Column="0"></Label>
-            <Label x:Name="shoots" FontSize="Medium" Grid.Row="1" Grid.Column="1"></Label>
+            <Label TextColor="Black" Text="Birthdate:" FontSize="Medium" Grid.Row="0" Grid.Column="0"></Label>
+            <Label TextColor="Black" x:Name="born" FontSize="Medium" Grid.Row="0" Grid.Column="1"></Label>
 
-            <Label Text="Weight:" FontSize="Medium" Grid.Row="2" Grid.Column="0"></Label>
-            <Label x:Name="weight" FontSize="Medium" Grid.Row="2" Grid.Column="1"></Label>
+            <Label TextColor="Black" Text="Shoots/Handedness:" FontSize="Medium" Grid.Row="1" Grid.Column="0"></Label>
+            <Label TextColor="Black" x:Name="shoots" FontSize="Medium" Grid.Row="1" Grid.Column="1"></Label>
 
-            <Label Text="Height:" FontSize="Medium" Grid.Row="3" Grid.Column="0"></Label>
-            <Label x:Name="height" FontSize="Medium" Grid.Row="3" Grid.Column="1"></Label>
+            <Label TextColor="Black" Text="Weight:" FontSize="Medium" Grid.Row="2" Grid.Column="0"></Label>
+            <Label TextColor="Black" x:Name="weight" FontSize="Medium" Grid.Row="2" Grid.Column="1"></Label>
+
+            <Label TextColor="Black" Text="Height:" FontSize="Medium" Grid.Row="3" Grid.Column="0"></Label>
+            <Label TextColor="Black" x:Name="height" FontSize="Medium" Grid.Row="3" Grid.Column="1"></Label>
         </Grid>
-
-        <Label TextColor="Black" HorizontalOptions="Center" FontSize="Title"  Text="Overall Statistics"></Label>
+        <Rectangle BackgroundColor="Gray"></Rectangle>
+        <Label HorizontalOptions="Center" FontSize="Title"  Text="Overall Statistics"></Label>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="80"></ColumnDefinition>
@@ -47,30 +42,36 @@
                 <ColumnDefinition Width="90"></ColumnDefinition>
                 <ColumnDefinition Width="90"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label Text="Games Played" FontSize="Small" Grid.Row="0" Grid.Column="0"></Label>
-            <Label Text="Goals" FontSize="Small" Grid.Row="0" Grid.Column="1"></Label>
-            <Label Text="Assists" FontSize="Small" Grid.Row="0" Grid.Column="2"></Label>
-            <Label Text="Points" FontSize="Small" Grid.Row="0" Grid.Column="3"></Label>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15"></RowDefinition>
+                <RowDefinition Height="31"></RowDefinition>
+                <RowDefinition Height="31"></RowDefinition>
+                <RowDefinition Height="31"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label TextColor="Black" Text="Games" FontSize="Small" Grid.Row="0" Grid.Column="0"></Label>
+            <Label TextColor="Black" Text="Goals" FontSize="Small" Grid.Row="0" Grid.Column="1"></Label>
+            <Label TextColor="Black" Text="Assists" FontSize="Small" Grid.Row="0" Grid.Column="2"></Label>
+            <Label TextColor="Black" Text="Points" FontSize="Small" Grid.Row="0" Grid.Column="3"></Label>
 
-            <Label x:Name="gp" FontSize="Small" Grid.Row="1" Grid.Column="0"></Label>
-            <Label x:Name="goals" FontSize="Small" Grid.Row="1" Grid.Column="1"></Label>
-            <Label x:Name="assists" FontSize="Small" Grid.Row="1" Grid.Column="2"></Label>
-            <Label x:Name="points" FontSize="Small" Grid.Row="1" Grid.Column="3"></Label>
+            <Label TextColor="Black" x:Name="gp" FontSize="Small" Grid.Row="1" Grid.Column="0"></Label>
+            <Label TextColor="Black" x:Name="goals" FontSize="Small" Grid.Row="1" Grid.Column="1"></Label>
+            <Label TextColor="Black" x:Name="assists" FontSize="Small" Grid.Row="1" Grid.Column="2"></Label>
+            <Label TextColor="Black" x:Name="points" FontSize="Small" Grid.Row="1" Grid.Column="3"></Label>
 
-            <Label Text="Penalty Minutes" FontSize="Small" Grid.Row="2" Grid.Column="0"></Label>
-            <Label Text="PowerPlay Goals" FontSize="Small" Grid.Row="2" Grid.Column="1"></Label>
-            <Label Text="Shorthanded Goals" FontSize="Small" Grid.Row="2" Grid.Column="2"></Label>
-            <Label Text="Game Winning Goals" FontSize="Small" Grid.Row="2" Grid.Column="3"></Label>
+            <Label TextColor="Black" Text="Penalty Minutes" FontSize="Small" Grid.Row="2" Grid.Column="0"></Label>
+            <Label TextColor="Black" Text="PowerPlay Goals" FontSize="Small" Grid.Row="2" Grid.Column="1"></Label>
+            <Label TextColor="Black" Text="Shorthanded Goals" FontSize="Small" Grid.Row="2" Grid.Column="2"></Label>
+            <Label TextColor="Black" Text="Game Winning Goals" FontSize="Small" Grid.Row="2" Grid.Column="3"></Label>
 
-            <Label x:Name="pim" FontSize="Small" Grid.Row="3" Grid.Column="0"></Label>
-            <Label x:Name="ppg" FontSize="Small" Grid.Row="3" Grid.Column="1"></Label>
-            <Label x:Name="shg" FontSize="Small" Grid.Row="3" Grid.Column="2"></Label>
-            <Label x:Name="gwg" FontSize="Small" Grid.Row="3" Grid.Column="3"></Label>
+            <Label TextColor="Black" x:Name="pim" FontSize="Small" Grid.Row="3" Grid.Column="0"></Label>
+            <Label TextColor="Black" x:Name="ppg" FontSize="Small" Grid.Row="3" Grid.Column="1"></Label>
+            <Label TextColor="Black" x:Name="shg" FontSize="Small" Grid.Row="3" Grid.Column="2"></Label>
+            <Label TextColor="Black" x:Name="gwg" FontSize="Small" Grid.Row="3" Grid.Column="3"></Label>
         </Grid>
-
+        <Rectangle BackgroundColor="Gray"></Rectangle>
         <StackLayout Orientation="Horizontal">
-            <Button Text="Add to Favourites"></Button>
-            <Button Clicked="Button_Clicked" Text="Season-By-Season Stats"></Button>
+            <Button Clicked="Favourite_Clicked"  Text="Add to Favourites"></Button>
+            <Button Clicked="Stats_Clicked" Text="Season-By-Season Stats"></Button>
         </StackLayout>
     </StackLayout>
 </ContentPage>

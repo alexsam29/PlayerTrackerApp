@@ -7,7 +7,7 @@ namespace PlayerTrackerApp
     public class Stats
     {
         public string goals { set; get; }
-        public string assists { set; get; }
+        public string asists { set; get; }
 
         public string points { get; set; }
         public string penalty { get; set; }
@@ -18,7 +18,7 @@ namespace PlayerTrackerApp
         public Stats(string goals, string assists, string points, string penalty, string ppg, string shg, string gwg)
         {
             this.goals = goals;
-            this.assists = assists;
+            this.asists = assists;
             this.points = points;
             this.penalty = penalty;
             this.ppg = ppg;
