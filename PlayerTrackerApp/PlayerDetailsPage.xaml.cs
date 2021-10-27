@@ -15,6 +15,7 @@ namespace PlayerTrackerApp
     {
         Player info;
         List<League> stats;
+        DatabaseManager dbManager = new DatabaseManager();
         public PlayerDetailsPage(Player player)
         {
             InitializeComponent();
@@ -43,6 +44,13 @@ namespace PlayerTrackerApp
 
         }
 
+        protected async override void OnAppearing()
+        {
+            if (await dbManager.isAdded(info))
+                favButton.IsEnabled = false;
+            base.OnAppearing();
+        }
+
         private void Stats_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new SeasonStatsPage(info.league));
@@ -50,7 +58,11 @@ namespace PlayerTrackerApp
 
         private void Favourite_Clicked(object sender, EventArgs e)
         {
+            dbManager.addPlayer(info);
+            favButton.IsEnabled = false;
 
+            string[] names = info.name.Split(' ');
+            DisplayAlert("Player added to favourites!", names[1] + " " + names[0] + " was successfully added to your favourites list.", "Okay");
         }
     }
 }

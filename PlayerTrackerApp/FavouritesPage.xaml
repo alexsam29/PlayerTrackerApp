@@ -1,12 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PlayerTrackerApp.FavouritesPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             x:Class="PlayerTrackerApp.FavouritesPage"
+             Title="Favourite Players">
+    <StackLayout Padding="20">
+        <Label FontSize="Medium" VerticalOptions="Center" x:Name="emptyLabel"></Label>
+        <ListView
+            x:Name="playerInfo" HasUnevenRows="True"
+            ItemTapped="playerInfo_ItemSelected" 
+            SeparatorColor="Black">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <StackLayout HorizontalOptions="Center">
+                                <Label FontSize="Large" Text="{Binding Path=name, StringFormat='{0}'}" TextColor="Black"></Label>
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                                <Label Text="{Binding teamshort} "></Label>
+                                <Label Text=" - "></Label>
+                                <Label Text="{Binding pos} "></Label>
+                                <Label Text=" - "></Label>
+                                <Label Text="{Binding Path=jersey, StringFormat='#{0}'}"></Label>
+                            </StackLayout>
+                            <Label HorizontalOptions="Center" Text="Tap for more details"></Label>
+                            <Label HorizontalOptions="Center" Text="Hold to remove"></Label>
+                        </StackLayout>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="Remove_Clicked" CommandParameter="{Binding .}" Text="Remove" IsDestructive="True"></MenuItem>
+                        </ViewCell.ContextActions>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button x:Name="removeBtn" Clicked="RemoveAll_Clicked" HorizontalOptions="End" Text="Remove All" TextColor="White" BackgroundColor="DarkRed"></Button>
+    </StackLayout>
 </ContentPage>

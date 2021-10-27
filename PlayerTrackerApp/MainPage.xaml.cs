@@ -13,12 +13,20 @@ namespace PlayerTrackerApp
     {
         string playerName;
         string leagueName;
+        ObservableCollection<Player> favPlayers = new ObservableCollection<Player>();
         ObservableCollection<Player> playerResult = new ObservableCollection<Player>();
         ObservableCollection<Player> history = new ObservableCollection<Player>();
         NetworkingManager manager = new NetworkingManager();
+        DatabaseManager dbManager = new DatabaseManager();
         public MainPage()
         {
             InitializeComponent();            
+        }
+
+        protected async override void OnAppearing()
+        {
+            favPlayers = await dbManager.createTable();
+            base.OnAppearing();
         }
 
         async void SearchBar_SearchButtonPressed(object sender, EventArgs e)
@@ -30,6 +38,7 @@ namespace PlayerTrackerApp
                 {
                     if (playerResult.Count == 1)
                         playerResult.Clear();
+                    playData.leagueName = leagueName;
                     playerResult.Add(playData);
                     history.Insert(0, playData);
                     playerInfo.ItemsSource = playerResult;
@@ -71,6 +80,29 @@ namespace PlayerTrackerApp
         private void History_Button_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new HistoryPage(history));
+        }
+
+        private void Favourites_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new FavouritesPage(favPlayers));
+        }
+
+        private async void AddFavourite_Clicked(object sender, EventArgs e)
+        {
+            var menuItem = sender as MenuItem;
+            var addPlayer = menuItem.CommandParameter as Player;
+
+            if(!await dbManager.isAdded(addPlayer))
+            {
+                dbManager.addPlayer(addPlayer);
+                favPlayers.Add(addPlayer);
+                string[] names = addPlayer.name.Split(' ');
+                await DisplayAlert("Player added to favourites!", names[1] + " " + names[0] + " was successfully added to your favourites list.", "Okay");
+            }
+            else
+                await DisplayAlert("Player already added!", "This player is already in your favourites list.", "Okay");
+
+
         }
     }
 }

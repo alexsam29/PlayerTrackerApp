@@ -70,8 +70,8 @@
         </Grid>
         <Rectangle BackgroundColor="Gray"></Rectangle>
         <StackLayout Orientation="Horizontal">
-            <Button Clicked="Favourite_Clicked"  Text="Add to Favourites"></Button>
-            <Button Clicked="Stats_Clicked" Text="Season-By-Season Stats"></Button>
+            <Button BackgroundColor="SkyBlue" x:Name="favButton" Clicked="Favourite_Clicked"  Text="Add to Favourites"></Button>
+            <Button BackgroundColor="LightGreen" Clicked="Stats_Clicked" Text="Season-By-Season Stats"></Button>
         </StackLayout>
     </StackLayout>
 </ContentPage>

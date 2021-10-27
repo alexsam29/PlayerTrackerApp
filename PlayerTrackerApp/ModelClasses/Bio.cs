@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SQLite;
 
 namespace PlayerTrackerApp
 {
@@ -8,7 +9,6 @@ namespace PlayerTrackerApp
     {
         public string born { set; get; }
         public string hold { set; get; }
-
         public string kg { get; set; }
         public string cm { get; set; }
 

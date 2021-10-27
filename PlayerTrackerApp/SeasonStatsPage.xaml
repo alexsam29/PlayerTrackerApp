@@ -5,8 +5,8 @@
              Title="Season-By-Season Stats">
     <StackLayout Padding="20" HorizontalOptions="Center">
         <Label TextColor="Black" FontSize="Large" x:Name="totalSeasons"></Label>
-        <Rectangle BackgroundColor="LightGray"></Rectangle>
-        <ListView x:Name="seasonStats" HasUnevenRows="True" SeparatorColor="Gray">
+        <Rectangle BackgroundColor="Gray"></Rectangle>
+        <ListView x:Name="seasonStats" HasUnevenRows="True" SeparatorColor="Black">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

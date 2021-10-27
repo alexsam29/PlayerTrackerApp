@@ -53,5 +53,36 @@ namespace PlayerTrackerApp
                 return finalObject;
             }
         }
+
+        public async Task<Player> getPlayerByID(string id, string league)
+        {
+            string completeURL = url1 + id + "/" + league + url2;
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri(completeURL),
+                Headers = {
+                            { "name", "SATAN Miroslav" },
+                            { "x-rapidapi-host", "hockey-live-sk-data.p.rapidapi.com" },
+                            { "x-rapidapi-key", "58a3a0a6e6mshf21c3118f7d8a69p1deac3jsnc063824923c9" },
+                          },
+            };
+            var response = await client.SendAsync(request);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return new Player();
+            }
+            else
+            {
+                var jsonString = await response.Content.ReadAsStringAsync();
+                if (jsonString == "No such player in database")
+                    return new Player();
+                var finalObject = JsonConvert.DeserializeObject<Player>
+                     (jsonString);
+
+                return finalObject;
+            }
+        }
     }
 }

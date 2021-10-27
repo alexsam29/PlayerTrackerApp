@@ -2,11 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PlayerTrackerApp.HistoryPage"
-             Title="Search History">
-    <StackLayout>
+             Title="Session History">
+    <StackLayout Padding="20">
+        <Label FontSize="Medium" VerticalOptions="Center" x:Name="emptyLabel"></Label>
         <ListView
             x:Name="historyList" HasUnevenRows="True"
-            ItemSelected="historyList_ItemSelected">
+            ItemSelected="historyList_ItemSelected"
+            SeparatorColor="Black">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -22,10 +24,15 @@
                                 <Label Text="{Binding Path=jersey, StringFormat='#{0}'}"></Label>
                             </StackLayout>
                             <Label HorizontalOptions="Center" Text="Tap for more details"></Label>
+                            <Label HorizontalOptions="Center" Text="Hold to add to favourites"></Label>
                         </StackLayout>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="AddFavourite_Clicked" CommandParameter="{Binding .}" Text="Add to Favourites" IsDestructive="True"></MenuItem>
+                        </ViewCell.ContextActions>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button x:Name="favBtn" Clicked="AddAll_Clicked" Text="Add All to Favourites" BackgroundColor="SkyBlue"></Button>
     </StackLayout>
 </ContentPage>

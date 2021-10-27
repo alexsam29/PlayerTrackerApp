@@ -3,37 +3,29 @@ using System.Collections.Generic;
 using System.Text;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using SQLite;
 
 namespace PlayerTrackerApp
 {
-    public class Player : INotifyPropertyChanged
+    public class Player
     {
+        [PrimaryKey]
         public int id { set; get; }
         public string name { set; get; }
         public string teamshort { set; get; }
         public string teamlong { get; set; }
         public string jersey { get; set; }
         public string pos { get; set; }
+        public string leagueName { get; set; }
+
+        [Ignore]
         public Bio bio { get; set; }
+
+        [Ignore]
         public Overall overall { get; set; }
+
+        [Ignore]
         public List<League> league { get; set; }
-
-        private bool _favourite = false;
-        public bool favourite
-        {
-            get { return _favourite; }
-            set
-            {
-                if (value == _favourite)
-                    return;
-                _favourite = value;
-
-                if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(favourite)));
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public Player()
         {

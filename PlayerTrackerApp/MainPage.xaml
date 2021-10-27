@@ -1,16 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PlayerTrackerApp.MainPage">
+             x:Class="PlayerTrackerApp.MainPage"
+             Title="Hockey Stat Tracker">
 
     <StackLayout Padding="20">
         <StackLayout HorizontalOptions="Center">
-            <Label FontSize="Title" 
-               TextColor="Black" 
-               HorizontalOptions="Center" 
-               Text="Hockey Stat Tracker">
-            </Label>
-            <Label HorizontalOptions="Center" Text="Find a player" FontSize="Subtitle"></Label>
+            <Label TextColor="Black" HorizontalOptions="Center" Text="Player Search" FontSize="Large"></Label>
             <SearchBar TextChanged="SearchBar_TextChanged" SearchButtonPressed="SearchBar_SearchButtonPressed" Placeholder="FirstName LastName"></SearchBar>
             <StackLayout Orientation="Vertical">
                 <Label Text=" Select a league:"></Label>
@@ -20,7 +16,7 @@
                 <RadioButton Value="WCH" CheckedChanged="RadioButton_CheckedChanged" GroupName="leagues" FontSize="Small" Content="World Championship"></RadioButton>
             </StackLayout>
             <Button BackgroundColor="LightGreen" Clicked="Search_Button_Clicked" Text="Search" ></Button>
-            <Button Text="View Favourites" ></Button>
+            <Button BackgroundColor="LightSkyBlue" Clicked="Favourites_Clicked" Text="View Favourites" ></Button>
         </StackLayout>
         <ListView
             x:Name="playerInfo" HasUnevenRows="True"
@@ -40,12 +36,16 @@
                                 <Label Text="{Binding Path=jersey, StringFormat='#{0}'}"></Label>
                             </StackLayout>
                             <Label HorizontalOptions="Center" Text="Tap for more details"></Label>
+                            <Label HorizontalOptions="Center" Text="Hold to add to favourites"></Label>
                         </StackLayout>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="AddFavourite_Clicked" CommandParameter="{Binding .}" Text="Add to Favourites"></MenuItem>
+                        </ViewCell.ContextActions>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Clicked="History_Button_Clicked" HorizontalOptions="End" Text="Search History"></Button>
+        <Button Clicked="History_Button_Clicked" HorizontalOptions="End" Text="Session History"></Button>
     </StackLayout>
 
 </ContentPage>
