@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace PlayerTrackerApp
 {
@@ -59,7 +55,6 @@ namespace PlayerTrackerApp
             if (!await dbManager.isAdded(addPlayer))
             {
                 dbManager.addPlayer(addPlayer);
-                //favPlayers.Add(addPlayer);
                 string[] names = addPlayer.name.Split(' ');
                 await DisplayAlert("Player added to favourites!", names[1] + " " + names[0] + " was successfully added to your favourites list.", "Okay");
             }
