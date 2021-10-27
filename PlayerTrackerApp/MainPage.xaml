@@ -9,7 +9,7 @@
             <Label TextColor="Black" HorizontalOptions="Center" Text="Player Search" FontSize="Large"></Label>
             <SearchBar TextChanged="SearchBar_TextChanged" SearchButtonPressed="SearchBar_SearchButtonPressed" Placeholder="FirstName LastName"></SearchBar>
             <StackLayout Orientation="Vertical">
-                <Label Text=" Select a league:"></Label>
+                <Label Text=" Select a League:"></Label>
                 <RadioButton Value="NHL" CheckedChanged="RadioButton_CheckedChanged" GroupName="leagues" FontSize="Small" Content="NHL"></RadioButton>
                 <RadioButton Value="OG" CheckedChanged="RadioButton_CheckedChanged" GroupName="leagues" FontSize="Small" Content="Olympic Games"></RadioButton>
                 <RadioButton Value="WJC" CheckedChanged="RadioButton_CheckedChanged" GroupName="leagues" FontSize="Small" Content="World Junior Championship"></RadioButton>
