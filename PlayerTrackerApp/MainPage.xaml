@@ -1,24 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PlayerTrackerApp.MainPage">
+             x:Class="PlayerTrackerApp.MainPage"
+             Title="Hockey Stat Tracker">
 
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
+    <StackLayout Padding="20">
+        <StackLayout HorizontalOptions="Center">
+            <Label TextColor="Black" HorizontalOptions="Center" Text="Player Search" FontSize="Large"></Label>
+            <SearchBar TextChanged="SearchBar_TextChanged" SearchButtonPressed="SearchBar_SearchButtonPressed" Placeholder="FirstName LastName"></SearchBar>
+            <StackLayout Orientation="Vertical">
+                <Label Text=" Select a League:"></Label>
+                <RadioButton Value="NHL" CheckedChanged="RadioButton_CheckedChanged" GroupName="leagues" FontSize="Small" Content="NHL"></RadioButton>
+                <RadioButton Value="OG" CheckedChanged="RadioButton_CheckedChanged" GroupName="leagues" FontSize="Small" Content="Olympic Games"></RadioButton>
+                <RadioButton Value="WJC" CheckedChanged="RadioButton_CheckedChanged" GroupName="leagues" FontSize="Small" Content="World Junior Championship"></RadioButton>
+                <RadioButton Value="WCH" CheckedChanged="RadioButton_CheckedChanged" GroupName="leagues" FontSize="Small" Content="World Championship"></RadioButton>
+            </StackLayout>
+            <Button BackgroundColor="LightGreen" Clicked="Search_Button_Clicked" Text="Search" ></Button>
+            <Button BackgroundColor="LightSkyBlue" Clicked="Favourites_Clicked" Text="View Favourites" ></Button>
+        </StackLayout>
+        <ListView
+            x:Name="playerInfo" HasUnevenRows="True"
+            ItemTapped="playerInfo_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <StackLayout HorizontalOptions="Center">
+                                <Label FontSize="Large" Text="{Binding Path=name, StringFormat='{0}'}" TextColor="Black"></Label>
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                                <Label Text="{Binding teamshort} "></Label>
+                                <Label Text=" - "></Label>
+                                <Label Text="{Binding pos} "></Label>
+                                <Label Text=" - "></Label>
+                                <Label Text="{Binding Path=jersey, StringFormat='#{0}'}"></Label>
+                            </StackLayout>
+                            <Label HorizontalOptions="Center" Text="Tap for more details"></Label>
+                            <Label HorizontalOptions="Center" Text="Hold to add to favourites"></Label>
+                        </StackLayout>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="AddFavourite_Clicked" CommandParameter="{Binding .}" Text="Add to Favourites"></MenuItem>
+                        </ViewCell.ContextActions>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Clicked="History_Button_Clicked" HorizontalOptions="End" Text="Session History"></Button>
     </StackLayout>
 
 </ContentPage>

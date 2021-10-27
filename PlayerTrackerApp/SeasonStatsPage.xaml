@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlayerTrackerApp.SeasonStatsPage"
+             Title="Season-By-Season Stats">
+    <StackLayout Padding="20" HorizontalOptions="Center">
+        <Label TextColor="Black" FontSize="Large" x:Name="totalSeasons"></Label>
+        <Rectangle BackgroundColor="Gray"></Rectangle>
+        <ListView x:Name="seasonStats" HasUnevenRows="True" SeparatorColor="Black">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="{Binding Path=name, StringFormat='Season: {0}'}" TextColor="Black"></Label>
+                            <Label Text="{Binding Path=team, StringFormat='Team: {0}'}" TextColor="Black"></Label>
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="90"></ColumnDefinition>
+                                    <ColumnDefinition Width="90"></ColumnDefinition>
+                                    <ColumnDefinition Width="95"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="15"></RowDefinition>
+                                    <RowDefinition Height="20"></RowDefinition>
+                                    <RowDefinition Height="31"></RowDefinition>
+                                    <RowDefinition Height="40"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Label TextColor="Black" Text="Goals" FontSize="Small" Grid.Row="0" Grid.Column="0"></Label>
+                                <Label TextColor="Black" Text="Assists" FontSize="Small" Grid.Row="0" Grid.Column="1"></Label>
+                                <Label TextColor="Black" Text="Points" FontSize="Small" Grid.Row="0" Grid.Column="2"></Label>
+                                <Label TextColor="Black" Text="Penalties (min)" FontSize="Small" Grid.Row="0" Grid.Column="3"></Label>
+                                
+                                <Label TextColor="Black" Text="{Binding Path=stats.goals}" FontSize="Small" Grid.Row="1" Grid.Column="0"></Label>
+                                <Label TextColor="Black" Text="{Binding Path=stats.asists}" FontSize="Small" Grid.Row="1" Grid.Column="1"></Label>
+                                <Label TextColor="Black" Text="{Binding Path=stats.points}" FontSize="Small" Grid.Row="1" Grid.Column="2"></Label>
+                                <Label TextColor="Black" Text="{Binding Path=stats.penalty}" FontSize="Small" Grid.Row="1" Grid.Column="3"></Label>
+
+                                
+                                <Label TextColor="Black" Text="PowerPlay Goals" FontSize="Small" Grid.Row="2" Grid.Column="0"></Label>
+                                <Label TextColor="Black" Text="Shorthanded Goals" FontSize="Small" Grid.Row="2" Grid.Column="1"></Label>
+                                <Label TextColor="Black" Text="Game Winning Goals" FontSize="Small" Grid.Row="2" Grid.Column="2"></Label>
+
+                                
+                                <Label TextColor="Black" Text="{Binding Path=stats.ppg}" FontSize="Small" Grid.Row="3" Grid.Column="0"></Label>
+                                <Label TextColor="Black" Text="{Binding Path=stats.shg}" FontSize="Small" Grid.Row="3" Grid.Column="1"></Label>
+                                <Label TextColor="Black" Text="{Binding Path=stats.gwg}" FontSize="Small" Grid.Row="3" Grid.Column="2"></Label>
+                            </Grid>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
